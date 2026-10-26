@@ -23,7 +23,6 @@
 #include "config.h"  //local configuration information
 #include "Arduino.h"
 #include "esp_system.h"
-//#include "esp_sleep.h"
 #include <ArduinoJson.h>
 #include <Preferences.h>
 #include <SPI.h>
@@ -41,16 +40,13 @@
 #include <KellerLD.h>
 #include "CUI_PS02.h"
 #include <Adafruit_ThinkInk.h>
-//#include <Adafruit_LPS35HW.h>
 #include <Adafruit_EPD.h>
 
-//hw_timer_t *timer = NULL;
 Adafruit_NeoPixel pixels(2, NEOPIXEL, NEO_GRB + NEO_KHZ800);
 MS5837 controlbrd;
 Adafruit_BME280 bme;  // I2C
 KellerLD keller;
 PS02 ps02;
-//Adafruit_SSD1675 display(250, 122, EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, -1);  //2.13" mono eink display
 ThinkInk_213_Mono_BN display(EPD_DC, EPD_RESET, EPD_CS, SRAM_CS, EPD_BUSY, EPD_SPI);
 TinyGsm modem(SerialAT);
 TinyGsmClient client(modem);
@@ -120,10 +116,6 @@ String NetTimeString = "";
 String LocationString = "";
 String jsondata;
 
-// void IRAM_ATTR watchdog() {
-//   SerialMon.println("\n\nWatchdog timeout\n\n");  //ets_printf("reboot\n");
-//   esp_restart();
-// }
 
 void setup() {
   setCpuFrequencyMhz(80);
@@ -147,7 +139,6 @@ void setup() {
   strobeLED(0, 25, 25, 25, 100, 25, 4);  //strobeLED(LEDs, R, G, B, ms_on, ms_off, times)
   strobeLED(1, 25, 25, 25, 100, 25, 4);  //strobeLED(LEDs, R, G, B, ms_on, ms_off, times)
   display.begin(THINKINK_MONO);
-  //display.begin();
   display.clearBuffer();
   display.setCursor(0, 0);
   display.setTextColor(COLOR1);

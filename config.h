@@ -3,8 +3,8 @@
  */
 #include "Arduino.h"
 
-String FWVERSION = "Rev2.62";  // current firmware version
-String FWDATE = "9/29/2025";    // current firmware date
+String FWVERSION = "Rev3.1.1";  // current firmware version
+String FWDATE = "10/26/2026";    // current firmware date
 String CNTRLBRD = "RevF";
 String SNSRBRD = "None";
 
@@ -31,7 +31,9 @@ const char otaFirmwareResource[] = "/lcfs/firmware/firmware.bin";   // Arduino I
 #define _BV(bit) (1 << (bit))
 #endif
 
-//I2C Addresses of sensors
+// ------------------------------
+// I2C Addresses of sensors
+// ------------------------------
 #define KELLER_LD_ADDR 0x40  // I2C Address of the Keller pressure/temperature sensor
 #define CUI_PS02_ADDR 0x6D   // I2C Address of the CUI pressure sensor
 #define LPS33HWADDR_1 0x5C   // I2C Address of the pressure/temperature sensor
@@ -42,7 +44,9 @@ const char otaFirmwareResource[] = "/lcfs/firmware/firmware.bin";   // Arduino I
 #define MS5803ADDR_2 0x77    // I2C Address of the pressure/temperature sensor
 #define BMEADDR 0x77         // I2C Address of the I2C BME280 sensor
 
-//GPIO pin definitions
+// ------------------------------
+// GPIO pin definitions
+// ------------------------------
 #define EPD_RESET 2     // can set to -1 and share with microcontroller Reset!
 #define EPD_BUSY -1     // can set to -1 to not use a pin (will wait a fixed delay)
 #define SENSOR_RST 2    // GPIO pin connected to reset of sensors and eink
@@ -65,6 +69,9 @@ const char otaFirmwareResource[] = "/lcfs/firmware/firmware.bin";   // Arduino I
 #define V_IN 39
 #define EPD_SPI &SPI  // primary SPI
 
+// ------------------------------
+// Other Misc.
+// ------------------------------
 #define TINY_GSM_MODEM_BG96
 #define TINY_GSM_DEBUG SerialMon
 #define TINY_GSM_RX_BUFFER 1024  // Set RX buffer to 1Kb or full HTTP response wont be received
@@ -73,7 +80,7 @@ const char otaFirmwareResource[] = "/lcfs/firmware/firmware.bin";   // Arduino I
 #define SerialAT Serial1  // Set serial for AT commands (to the module)
 #define updateMinutes 5   // normal status update time in minutes (default is 5 minutes)
 #define sleepTime 60      // light sleep time between indicating status on LEDs in seconds (the longer the less power used)
-// #define logDataPeriod 5   //period in minutes to log data to SD CARD
+
 #define ARRAYSIZE 20
 #define uS_TO_S_FACTOR 1000000ULL  // Conversion factor for micro seconds to seconds
 #define COLOR1 EPD_BLACK
