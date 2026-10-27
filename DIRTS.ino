@@ -482,12 +482,18 @@ void loop() {
     // send data to webserver
     serializeJson(doc, jsondata);
     POST_DATA = true;
+    
+    /*
+
     if (!Skywire()) {                       // did not POST data correctly
       startup = true;                       //
       strobeLED(2, 50, 0, 0, 250, 250, 2);  //strobeLED(LEDs, R, G, B, ms_on, ms_off, times)
     } else {                                // successfully POSTed JSON data
       strobeLED(2, 0, 0, 50, 250, 250, 2);  //strobeLED(LEDs, R, G, B, ms_on, ms_off, times)
     }
+
+    */
+
     displayValues();
     SleepSeconds = 60 - second();
     SerialMon.printf("\nFirst light Sleep for %d seconds. \n", SleepSeconds);
